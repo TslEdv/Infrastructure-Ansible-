@@ -1,5 +1,8 @@
 ---
-  - name: Ansible connection test
-    hosts: all
+  - name: Web server
+    hosts: web_servers
+    become: yes
     roles:
       - test_connection
+      - users
+      - nginx

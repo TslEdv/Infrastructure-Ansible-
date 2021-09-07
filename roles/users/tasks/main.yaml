@@ -1,0 +1,25 @@
+- name: Add users Juri
+  ansible.builtin.user:
+    name: juri
+    state: present
+
+
+- name: Add juri keys
+  ansible.posix.authorized_key:
+    user: juri
+    state: present
+    key: https://github.com/hudolejev.keys
+
+
+- name: Add user roman
+  ansible.builtin.user:
+    name: roman
+    state: present
+
+
+- name: Add roman keys
+  ansible.posix.authorized_key:
+    user: roman
+    state: present
+    key: https://github.com/romankuchin.keys
+
