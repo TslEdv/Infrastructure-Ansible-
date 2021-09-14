@@ -5,4 +5,6 @@
     roles:
       - test_connection
       - users
+      - agama
+      - uwsgi
       - nginx

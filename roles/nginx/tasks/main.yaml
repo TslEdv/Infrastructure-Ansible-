@@ -2,14 +2,21 @@
   apt:
     name: nginx
     state: latest
+    update_cache: yes
 
+- name: replace html
+  copy:
+    src: index.html
+    dest: /var/www/html/index.nginx-debian.html
+
+- name: Nginx config
+  copy:
+    src: default
+    dest: /etc/nginx/sites-enabled/default
+  notify: Restart nginx
 
 - name: start nginx
   service:
       name: nginx
       state: started
-
-- name: replace html
-  copy:
-    src: /home/edvin/ica0002/roles/nginx/files/index.html
-    dest: /var/www/html/index.nginx-debian.html
+      enabled: yes
