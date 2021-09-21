@@ -1,10 +1,20 @@
 ---
+  - name: Init
+    hosts: all
+    become: yes
+    roles:
+      - init
+
+  - name: Database server
+    hosts: db_servers
+    become: yes
+    roles:
+      - mysql
+
   - name: Web server
     hosts: web_servers
     become: yes
     roles:
-      - test_connection
-      - users
       - agama
       - uwsgi
       - nginx

@@ -11,8 +11,9 @@
 
 - name: Install AGAMA dependancies
   ansible.builtin.apt:
-    name: python3-flask-sqlalchemy
-    update_cache: yes
+    name:
+      - python3-flask-sqlalchemy
+      - python3-pymysql
 
 - name: Install AGAMA
   ansible.builtin.get_url:
