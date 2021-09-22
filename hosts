@@ -1,5 +1,5 @@
-TslEdv-1 ansible_host=193.40.156.86 ansible_port=9322 ansible_ssh_user=ubuntu
-TslEdv-2 ansible_host=193.40.156.86 ansible_port=16822 ansible_ssh_user=ubuntu
+TslEdv-1 ansible_host=193.40.156.86 ansible_port=14522 ansible_ssh_user=ubuntu
+TslEdv-2 ansible_host=193.40.156.86 ansible_port=19322 ansible_ssh_user=ubuntu
 
 [db_servers]
 TslEdv-2
