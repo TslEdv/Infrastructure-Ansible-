@@ -1,4 +1,11 @@
 ---
+  - name: Setup
+    hosts: all
+    become: yes
+    gather_facts: yes
+    tasks:
+      - setup:
+
   - name: Init
     hosts: all
     become: yes
@@ -10,6 +17,7 @@
     become: yes
     roles:
       - mysql
+      - bind
 
   - name: Web server
     hosts: web_servers
@@ -18,3 +26,9 @@
       - agama
       - uwsgi
       - nginx
+
+  - name: Config DNS
+    hosts: all
+    become: yes
+    roles:
+      - dns

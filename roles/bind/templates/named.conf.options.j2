@@ -1,0 +1,15 @@
+acl lan {
+        {% for n in networks %}
+        {{ n }};
+        {% endfor %}
+        };
+options {
+	directory "/var/cache/bind";
+	allow-query { lan; };
+	forwarders {
+	{% for f in dns_forwarders %}
+	{{ f }};
+	{% endfor %}
+	};
+	dnssec-validation no;
+};

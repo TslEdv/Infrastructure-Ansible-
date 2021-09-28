@@ -1,0 +1,28 @@
+- name: Install bind
+  apt:
+    name: bind9
+    state: latest
+
+- name: bind9
+  service:
+      name: bind9
+      state: started
+      enabled: yes
+
+- name: Configure bind9
+  ansible.builtin.template:
+    src: named.conf.options.j2
+    dest: /etc/bind/named.conf.options
+  notify: Restart bind9
+
+- name: Upload db file
+  ansible.builtin.template:
+    src: db.essing
+    dest: /var/cache/bind/db.essing
+
+- name: Configure bind9
+  ansible.builtin.template:
+    src: named.conf.local.j2
+    dest: /etc/bind/named.conf.local
+  notify: Restart bind9
+
