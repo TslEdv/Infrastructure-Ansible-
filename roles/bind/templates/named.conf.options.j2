@@ -5,6 +5,7 @@ acl lan {
         };
 options {
 	directory "/var/cache/bind";
+	recursion yes;
 	allow-query { lan; };
 	forwarders {
 	{% for f in dns_forwarders %}

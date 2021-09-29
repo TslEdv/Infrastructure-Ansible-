@@ -1,14 +1,9 @@
-vm_bind9: TslEdv2
-startup: essing
 dns_forwarders:
- - 1.1.1.1
- - 8.8.8.8
+ - 1.1.1.1;
+ - 8.8.8.;
  - 9.9.9.9
  - 9.9.9.10
-networks:
- - 192.168.42.0/24
- - 127.0.0.0/8
-mysql_host: TslEdv2
+mysql_host: 192.168.42.175
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
