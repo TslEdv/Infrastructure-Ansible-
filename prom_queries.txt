@@ -1,0 +1,2 @@
+rate(node_cpu_seconds_total{mode="user"}[24h])
+rate(node_memory_MemFree_bytes[24h])

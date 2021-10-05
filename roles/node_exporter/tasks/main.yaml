@@ -1,0 +1,10 @@
+- name: Install node exporter
+  apt:
+    name: prometheus-node-exporter
+    state: latest
+
+- name: node exporter start
+  service:
+      name: prometheus-node-exporter
+      state: started
+      enabled: yes

@@ -10,7 +10,7 @@
     dest: /var/www/html/index.nginx-debian.html
 
 - name: Nginx config
-  copy:
+  template:
     src: default
     dest: /etc/nginx/sites-enabled/default
   notify: Restart nginx

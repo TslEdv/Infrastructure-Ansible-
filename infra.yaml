@@ -11,6 +11,7 @@
     become: yes
     roles:
       - init
+      - node_exporter
 
   - name: Database server
     hosts: db_servers
@@ -25,6 +26,7 @@
     roles:
       - agama
       - uwsgi
+      - prometheus
       - nginx
 
   - name: DNS Config
