@@ -2,11 +2,7 @@ server {
 	listen 80 default_server;
 	server_name _;
 
-	location / {
-		uwsgi_pass localhost:5000;
-		include uwsgi_params;
-	}
-        location /node_exporter {
+        location /node-metrics {
                 proxy_pass http://localhost:9100/metrics;
         }
 
@@ -14,5 +10,11 @@ server {
 	location /prometheus {
 	  proxy_pass http://localhost:9090;
 	}
+
+        location / {
+                uwsgi_pass localhost:5000;
+                include uwsgi_params;
+        }
+
 	{% endif %}
 }

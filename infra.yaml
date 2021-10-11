@@ -27,6 +27,11 @@
       - agama
       - uwsgi
       - prometheus
+
+  - name: Nginx
+    hosts: all
+    become: yes
+    roles:
       - nginx
 
   - name: DNS Config
