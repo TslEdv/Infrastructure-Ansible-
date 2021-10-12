@@ -5,7 +5,7 @@
 
 - name: Exporter User
   community.mysql.mysql_user:
-    name: exporter          
+    name: "exporter"          
     password: "{{ mysql_exporter_pass }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
     priv: 
@@ -15,6 +15,8 @@
   template:
     src: my.cnf.j2
     dest: /var/lib/prometheus/.my.cnf
+    mode: '0400'
+    owner: prometheus
   notify: Restart mysqlexporter
 
 - name: sql exporter start
