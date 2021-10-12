@@ -1,0 +1,4 @@
+- name: Restart mysqlexporter
+  ansible.builtin.service:
+    name: prometheus-mysqld-exporter
+    state: restarted

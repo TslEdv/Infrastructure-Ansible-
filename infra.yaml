@@ -18,7 +18,9 @@
     become: yes
     roles:
       - mysql
+      - mysql_exporter
       - bind
+      - bind_exporter
 
   - name: Web server
     hosts: web_servers
@@ -26,13 +28,25 @@
     roles:
       - agama
       - uwsgi
-      - prometheus
 
   - name: Nginx
     hosts: all
     become: yes
     roles:
       - nginx
+      - nginx_exporter
+
+  - name: Prometheus
+    hosts: prometheus
+    become: yes
+    roles:
+      - prometheus
+
+  - name: grafana
+    hosts: grafana
+    become: yes
+    roles:
+      - grafana
 
   - name: DNS Config
     hosts: all
