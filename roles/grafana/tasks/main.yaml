@@ -16,12 +16,37 @@
   apt:
     name: grafana
     state: latest
+  notify: Change pass
 
 - name: start grafana
   service:
       name: grafana-server
       state: started
       enabled: yes
+
+- name: Create directory /var/lib/grafana/dashboards
+  ansible.builtin.file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+
+- name: grafana datasource
+  template:
+    src: datasource.yaml
+    dest: /etc/grafana/provisioning/datasources/datasource.yaml
+  notify: Restart grafana
+
+- name: grafana dashboard
+  template:
+    src: dashboard.yaml
+    dest: /etc/grafana/provisioning/dashboards/dashboard.yaml
+  notify: Restart grafana
+
+- name: grafana dashboard upload
+  copy:
+    src: main.json
+    dest: /var/lib/grafana/dashboards/main.json
+  notify: Restart grafana
+
 - name: grafana config
   template:
     src: grafana.ini.j2
