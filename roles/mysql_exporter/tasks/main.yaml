@@ -10,14 +10,7 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     priv: 
       '*.*': 'PROCESS,REPLICATION CLIENT,SELECT'
-
-- name: MySQL exporter config
-  template:
-    src: my.cnf.j2
-    dest: /var/lib/prometheus/.my.cnf
-    mode: '0400'
-    owner: prometheus
-  notify: Restart mysqlexporter
+  notify: Restart sql
 
 - name: sql exporter start
   service:
@@ -25,3 +18,12 @@
       state: started
       enabled: yes
 
+- name: MySQL exporter config
+  template:
+    src: my.cnf.j2
+    dest: /var/lib/prometheus/.my.cnf
+    mode: '0400'
+    owner: prometheus
+  notify: 
+    - Restart mysqlexporter
+    - Restart sql

@@ -3,15 +3,16 @@
     name: prometheus-nginx-exporter
     state: latest
 
-- name: Nginx config
-  template:
-    src: exporter
-    dest: /etc/nginx/sites-enabled/exporter
-  notify: Restart nginx
-
 - name: nginx exporter start
   service:
       name: prometheus-nginx-exporter
       state: started
       enabled: yes
 
+- name: Nginx config
+  template:
+    src: exporter
+    dest: /etc/nginx/sites-enabled/exporter
+  notify:
+     - Restart nginx
+     - Restart nginxexporter
