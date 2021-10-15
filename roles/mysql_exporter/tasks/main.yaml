@@ -12,12 +12,6 @@
       '*.*': 'PROCESS,REPLICATION CLIENT,SELECT'
   notify: Restart sql
 
-- name: sql exporter start
-  service:
-      name: prometheus-mysqld-exporter
-      state: started
-      enabled: yes
-
 - name: MySQL exporter config
   template:
     src: my.cnf.j2
