@@ -1,0 +1,38 @@
+- name: Install fping
+  apt:
+    name: fping
+    state: latest
+    update_cache: yes
+
+- name: Add user pinger
+  ansible.builtin.user:
+    name: pinger
+    state: present
+
+- name: Create directory /etc/pinger
+  ansible.builtin.file:
+    path: /etc/pinger
+    state: directory
+    owner: pinger
+
+- name: pinger.conf upload
+  copy:
+    src: pinger.conf
+    dest: /etc/pinger/pinger.conf
+
+- name: pinger upload
+  copy:
+    src: pinger.sh
+    dest: /usr/local/bin/pinger
+
+- name: pinger service upload
+  copy:
+    src: pinger.service
+    dest: /etc/systemd/system/pinger.service
+  notify: reload daemon
+
+- name: start pinger
+  service:
+      name: pinger.service
+      state: started
+      enabled: yes

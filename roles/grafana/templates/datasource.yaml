@@ -35,3 +35,57 @@ datasources:
     isDefault: true
     # <map> fields that will be converted to json and stored in jsonData
     editable: false
+
+  - name: influxdb_latency
+    # <string, required> datasource type. Required
+    type: influxdb
+    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
+    access: proxy
+    # <int> org id. will default to orgId 1 if not specified
+    orgId: 1
+    # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated au>
+    # <string> url
+    url: http://TslEdv2:8086
+    # <string> Deprecated, use secureJsonData.password
+    password:
+    # <string> database user, if used
+    user:
+    # <string> database name, if used
+    database: latency
+    # <bool> enable/disable basic auth
+    # <string> basic auth username
+    # <string> Deprecated, use secureJsonData.basicAuthPassword
+    # <bool> enable/disable with credentials headers
+    # <bool> mark as default datasource. Max one per org
+    isDefault: false
+    # <map> fields that will be converted to json and stored in jsonData
+    editable: false
+    jsonData:
+      httpMode: GET
+
+  - name: influxdb_telegraf
+    # <string, required> datasource type. Required
+    type: influxdb
+    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
+    access: proxy
+    # <int> org id. will default to orgId 1 if not specified
+    orgId: 1
+    # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated au>
+    # <string> url
+    url: http://TslEdv2:8086
+    # <string> Deprecated, use secureJsonData.password
+    password:
+    # <string> database user, if used
+    user:
+    # <string> database name, if used
+    database: telegraf
+    # <bool> enable/disable basic auth
+    # <string> basic auth username
+    # <string> Deprecated, use secureJsonData.basicAuthPassword
+    # <bool> enable/disable with credentials headers
+    # <bool> mark as default datasource. Max one per org
+    isDefault: false
+    # <map> fields that will be converted to json and stored in jsonData
+    editable: false
+    jsonData:
+      httpMode: GET

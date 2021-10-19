@@ -34,6 +34,7 @@
     src: datasource.yaml
     dest: /etc/grafana/provisioning/datasources/datasource.yaml
   notify: Restart grafana
+  tags: ds
 
 - name: grafana dashboard
   template:
@@ -46,6 +47,14 @@
     src: main.json
     dest: /var/lib/grafana/dashboards/main.json
   notify: Restart grafana
+
+- name: grafana dashboard 2 upload
+  copy:
+    src: syslog.json
+    dest: /var/lib/grafana/dashboards/syslog.json
+  notify: Restart grafana
+  tags: dh
+
 
 - name: grafana config
   template:

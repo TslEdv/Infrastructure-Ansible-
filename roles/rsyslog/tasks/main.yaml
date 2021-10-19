@@ -1,0 +1,5 @@
+- name: rsyslog config
+  copy:
+    src: 10-telegraf.conf
+    dest: /etc/rsyslog.d/10-telegraf.conf
+  notify: Restart rsyslog

@@ -21,6 +21,14 @@
       - mysql_exporter
       - bind
       - bind_exporter
+      - influxdb
+      - pinger
+
+  - name: rsyslog telegraf
+    hosts: all
+    become: yes
+    roles:
+      - rsyslog
 
   - name: Web server
     hosts: web_servers

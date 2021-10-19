@@ -1,0 +1,5 @@
+- name: Install influxdb exporter
+  apt:
+    name: 
+    state: latest
+  notify: Change pass
