@@ -26,6 +26,10 @@ server {
 	  proxy_pass http://localhost:9119/metrics;
         }
 
+        location /influxdb-metrics {
+          proxy_pass http://localhost:9424/metrics;
+        }
+
         {% endif %}
 
         {% if inventory_hostname in groups['grafana'] %}

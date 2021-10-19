@@ -23,6 +23,7 @@
       - bind_exporter
       - influxdb
       - pinger
+      - influxdb_exporter
 
   - name: rsyslog telegraf
     hosts: all

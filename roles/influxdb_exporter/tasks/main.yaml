@@ -1,5 +1,16 @@
-- name: Install influxdb exporter
-  apt:
-    name: 
-    state: latest
-  notify: Change pass
+- name: Download influxdb-stats-exporter
+  get_url:
+    url: https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_amd64
+    dest: /usr/local/bin/influxdb_stats_exporter
+
+- name: service upload
+  copy:
+    src: prometheus-influxdb-stats-exporter.service
+    dest: /etc/systemd/system/prometheus-influxdb-stats-exporter.service
+  notify: reload daemon
+
+- name: start service
+  service:
+      name: prometheus-influxdb-stats-exporter.service
+      state: started
+      enabled: yes
