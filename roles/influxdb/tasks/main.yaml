@@ -13,6 +13,13 @@
     state: latest
     update_cache: yes
 
+- name: influxdb config
+  copy:
+    src: influxdb.conf
+    dest: /etc/influxdb/influxdb.conf
+  notify: restart influxdb
+
+
 - name: start influxdb
   service:
       name: influxdb

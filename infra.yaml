@@ -13,14 +13,24 @@
       - init
       - node_exporter
 
-  - name: Database server
+  - name: mysql
     hosts: db_servers
     become: yes
     roles:
       - mysql
       - mysql_exporter
+
+  - name: bind9
+    hosts: db_servers
+    become: yes
+    roles:
       - bind
       - bind_exporter
+
+  - name: influxdb
+    hosts: db_servers
+    become: yes
+    roles:
       - influxdb
       - pinger
       - influxdb_exporter

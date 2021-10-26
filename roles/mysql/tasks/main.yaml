@@ -32,3 +32,4 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
+  notify: Restart sql

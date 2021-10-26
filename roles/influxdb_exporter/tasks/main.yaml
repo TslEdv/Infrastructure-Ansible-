@@ -2,6 +2,7 @@
   get_url:
     url: https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_amd64
     dest: /usr/local/bin/influxdb_stats_exporter
+    mode: '0777'
 
 - name: service upload
   copy:

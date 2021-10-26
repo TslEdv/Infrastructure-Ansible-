@@ -24,12 +24,15 @@
   copy:
     src: pinger.sh
     dest: /usr/local/bin/pinger
+    mode: '0777'
 
 - name: pinger service upload
   copy:
     src: pinger.service
     dest: /etc/systemd/system/pinger.service
-  notify: reload daemon
+  notify: 
+    - reload daemon
+    - restart pinger
 
 - name: start pinger
   service:
