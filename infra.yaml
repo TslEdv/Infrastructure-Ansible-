@@ -12,6 +12,7 @@
     roles:
       - init
       - node_exporter
+      - backup
 
   - name: mysql
     hosts: db_servers

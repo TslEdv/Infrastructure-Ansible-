@@ -1,3 +1,4 @@
+backup_ip: 192.168.42.156
 vm_bind9: TslEdv2
 startup: essing
 dns_forwarders:
