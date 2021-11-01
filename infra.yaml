@@ -32,8 +32,20 @@
     hosts: db_servers
     become: yes
     roles:
-      - influxdb
       - pinger
+      - influxdb_exporter
+
+  - name: pinger
+    hosts: db_servers
+    become: yes
+    roles:
+      - pinger
+      - influxdb_exporter
+
+  - name: influxdb exporter  
+    hosts: db_servers
+    become: yes
+    roles:
       - influxdb_exporter
 
   - name: rsyslog telegraf

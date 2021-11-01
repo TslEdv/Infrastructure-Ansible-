@@ -32,10 +32,11 @@
     dest: /etc/systemd/system/pinger.service
   notify: 
     - reload daemon
-    - restart pinger
 
 - name: start pinger
   service:
       name: pinger.service
       state: started
       enabled: yes
+  notify:
+    - restart pinger

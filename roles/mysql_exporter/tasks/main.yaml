@@ -3,6 +3,12 @@
     name: prometheus-mysqld-exporter
     state: latest
 
+- name: sql exporter start
+  service:
+      name: prometheus-mysqld-exporter
+      state: started
+      enabled: yes
+
 - name: Exporter User
   community.mysql.mysql_user:
     name: "exporter"          
@@ -19,5 +25,5 @@
     mode: '0400'
     owner: prometheus
   notify: 
-    - Restart mysqlexporter
     - Restart sql
+    - Restart mysqlexporter
