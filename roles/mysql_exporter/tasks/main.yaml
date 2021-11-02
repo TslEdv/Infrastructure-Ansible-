@@ -2,12 +2,12 @@
   apt:
     name: prometheus-mysqld-exporter
     state: latest
+  register: prom_exporter_installed
 
-- name: sql exporter start
-  service:
-      name: prometheus-mysqld-exporter
-      state: started
-      enabled: yes
+- name: Pause for 10 sec
+  pause:
+    seconds: 10
+  when: prom_exporter_installed.changed
 
 - name: Exporter User
   community.mysql.mysql_user:

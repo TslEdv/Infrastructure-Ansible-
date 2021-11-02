@@ -19,7 +19,13 @@
     become: yes
     roles:
       - mysql
+
+  - name: mysql exporter
+    hosts: db_servers
+    become: yes
+    roles:
       - mysql_exporter
+
 
   - name: bind9
     hosts: db_servers
@@ -32,15 +38,13 @@
     hosts: db_servers
     become: yes
     roles:
-      - pinger
-      - influxdb_exporter
+      - influxdb
 
   - name: pinger
     hosts: db_servers
     become: yes
     roles:
       - pinger
-      - influxdb_exporter
 
   - name: influxdb exporter  
     hosts: db_servers
