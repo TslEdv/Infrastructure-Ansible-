@@ -4,5 +4,17 @@
     state: present
     home: /home/backup
     generate_ssh_key: yes
-    force: yes
     ssh_key_bits: 2048
+
+- name: Create directory restore
+  ansible.builtin.file:
+    path: /home/backup/restore
+    state: directory
+    owner: backup
+    mode: '0755'
+
+- name: Install duplicity
+  apt:
+    name: duplicity
+    state: latest
+    update_cache: yes

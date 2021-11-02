@@ -19,6 +19,7 @@
     become: yes
     roles:
       - mysql
+      - mysql_backup
 
   - name: mysql exporter
     hosts: db_servers
@@ -39,6 +40,7 @@
     become: yes
     roles:
       - influxdb
+      - influxdb_backup
 
   - name: pinger
     hosts: db_servers

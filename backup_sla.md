@@ -8,7 +8,8 @@ Ansible repository is mirrored on another server, we backup the whole repository
 
 RPO - 
 
-We create backups every night during the 24h period.
+We create incremential backups every night at 1 am UTC.
+We create full backups every sunday at 1 am UTC.
 Acceptable data loss - 12h after the last backup.
 
 Versioning and retention - 
