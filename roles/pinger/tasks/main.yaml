@@ -38,5 +38,11 @@
       name: pinger.service
       state: started
       enabled: yes
+  register: pinger_installed
+
+- name: Pause for 10 sec
+  pause:
+    seconds: 10
+  when: pinger_installed.changed
   notify:
     - restart pinger

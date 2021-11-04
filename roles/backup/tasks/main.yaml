@@ -6,6 +6,13 @@
     generate_ssh_key: yes
     ssh_key_bits: 2048
 
+- name: server key config
+  template:
+    src: known_hosts
+    dest: /home/backup/.ssh/known_hosts
+    owner: backup
+    mode: '0644'
+
 - name: Create directory restore
   ansible.builtin.file:
     path: /home/backup/restore
