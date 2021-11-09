@@ -22,10 +22,16 @@ server {
           proxy_pass http://localhost:9104/metrics;
         }
 
+        {% endif %}
+
+        {% if inventory_hostname in groups['bind'] %}
         location /bind-metrics {
 	  proxy_pass http://localhost:9119/metrics;
         }
 
+        {% endif %}
+
+        {% if inventory_hostname in groups['influxdb'] %}
         location /influxdb-metrics {
           proxy_pass http://localhost:9424/metrics;
         }

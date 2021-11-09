@@ -1,11 +1,18 @@
-TslEdv1 ansible_host=193.40.156.86 ansible_port=10022 ansible_ssh_user=ubuntu
-TslEdv2 ansible_host=193.40.156.86 ansible_port=7322 ansible_ssh_user=ubuntu
+TslEdv1 ansible_host=193.40.156.86 ansible_port=9522 ansible_ssh_user=ubuntu
+TslEdv2 ansible_host=193.40.156.86 ansible_port=16122 ansible_ssh_user=ubuntu
 
 [db_servers]
+TslEdv1
 TslEdv2
 
 [web_servers]
 TslEdv1
+
+[bind]
+TslEdv2
+
+[influxdb]
+TslEdv2
 
 [prometheus]
 TslEdv1

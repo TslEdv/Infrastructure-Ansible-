@@ -51,6 +51,12 @@
   notify: Restart grafana
   tags: dh
 
+- name: grafana dashboard 3 upload
+  copy:
+    src: sql.json
+    dest: /var/lib/grafana/dashboards/sql.json
+  notify: Restart grafana
+  tags: dh
 
 - name: grafana config
   template:

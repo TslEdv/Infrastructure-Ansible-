@@ -9,7 +9,7 @@
     state: latest
 
 - name: sql config
-  copy:
+  template:
     src: override.cnf
     dest: /etc/mysql/mysql.conf.d/override.cnf
   notify: Restart sql
@@ -33,3 +33,34 @@
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
   notify: Restart sql
+
+- name: MySQL user replication
+  community.mysql.mysql_user:
+    name: "replication"
+    password: "{{ mysql_replication_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    host: "%"
+    priv: "*.*:REPLICATION SLAVE"
+  notify: Restart sql
+
+- name: MySQL replica read only mode ON
+  community.mysql.mysql_variables:
+    variable: read_only
+    value: 'ON'
+    mode: persist
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  when: inventory_hostname != mysql_host
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica
+
+- name: MySQL primary write ON
+  community.mysql.mysql_variables:
+    variable: read_only
+    value: 'OFF'
+    mode: persist
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  when: inventory_hostname == mysql_host
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica

@@ -19,6 +19,11 @@
     become: yes
     roles:
       - mysql
+
+  - name: mysql backup
+    hosts: db_servers
+    become: yes
+    roles:
       - mysql_backup
 
   - name: mysql exporter
@@ -29,27 +34,27 @@
 
 
   - name: bind9
-    hosts: db_servers
+    hosts: bind
     become: yes
     roles:
       - bind
       - bind_exporter
 
   - name: influxdb
-    hosts: db_servers
+    hosts: influxdb
     become: yes
     roles:
       - influxdb
       - influxdb_backup
 
   - name: pinger
-    hosts: db_servers
+    hosts: influxdb
     become: yes
     roles:
       - pinger
 
   - name: influxdb exporter  
-    hosts: db_servers
+    hosts: influxdb
     become: yes
     roles:
       - influxdb_exporter

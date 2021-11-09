@@ -32,6 +32,8 @@
     dest: /etc/systemd/system/pinger.service
   notify: 
     - reload daemon
+    - restart pinger
+
 
 - name: start pinger
   service:
@@ -44,5 +46,3 @@
   pause:
     seconds: 10
   when: pinger_installed.changed
-  notify:
-    - restart pinger

@@ -18,6 +18,12 @@
       '*.*': 'PROCESS,REPLICATION CLIENT,SELECT'
   notify: Restart sql
 
+- name: Configure default
+  ansible.builtin.template:
+    src: exporter
+    dest: /etc/default/prometheus-mysqld-exporter
+  notify: Restart mysqlexporter
+
 - name: MySQL exporter config
   template:
     src: my.cnf.j2
