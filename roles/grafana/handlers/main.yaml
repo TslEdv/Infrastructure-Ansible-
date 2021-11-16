@@ -1,6 +1,7 @@
 - name: Restart grafana
-  ansible.builtin.service:
-    name: grafana-server
-    state: restarted
-- name: Change pass
-  ansible.builtin.command: grafana-cli admin reset-admin-password {{ grafana_pass }}
+  docker_container:
+    name: grafana
+    image: grafana/grafana
+    state: started
+    restart: yes
+    container_default_behavior: no_defaults

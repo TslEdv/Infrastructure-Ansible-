@@ -12,4 +12,4 @@ providers:
     # <string> provider type. Default to 'file'
     type: file
     options:
-      path: /var/lib/grafana/dashboards
+      path: /etc/grafana/provisioning/dashboards

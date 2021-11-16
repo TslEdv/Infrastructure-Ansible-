@@ -1,4 +1,5 @@
 [Unit]
+Description=Pinger retrieves metrics from websites using fping
 After=network-online.target
 
 [Service]

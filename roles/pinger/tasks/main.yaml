@@ -19,30 +19,18 @@
   copy:
     src: pinger.conf
     dest: /etc/pinger/pinger.conf
+  notify: restart pinger
 
 - name: pinger upload
   copy:
     src: pinger.sh
     dest: /usr/local/bin/pinger
-    mode: '0777'
+    mode: u+x
+    owner: pinger
 
 - name: pinger service upload
   copy:
     src: pinger.service
     dest: /etc/systemd/system/pinger.service
-  notify: 
-    - reload daemon
-    - restart pinger
+  notify: Enable and reload daemon
 
-
-- name: start pinger
-  service:
-      name: pinger.service
-      state: started
-      enabled: yes
-  register: pinger_installed
-
-- name: Pause for 10 sec
-  pause:
-    seconds: 10
-  when: pinger_installed.changed

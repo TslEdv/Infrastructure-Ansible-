@@ -32,7 +32,6 @@
     roles:
       - mysql_exporter
 
-
   - name: bind9
     hosts: bind
     become: yes
@@ -47,17 +46,19 @@
       - influxdb
       - influxdb_backup
 
-  - name: pinger
-    hosts: influxdb
-    become: yes
-    roles:
-      - pinger
-
   - name: influxdb exporter  
     hosts: influxdb
     become: yes
     roles:
       - influxdb_exporter
+
+  - name: pinger
+    hosts: influxdb
+    become: yes
+    roles:
+      - pinger
+    tags:
+      - ping
 
   - name: rsyslog telegraf
     hosts: all
@@ -65,12 +66,17 @@
     roles:
       - rsyslog
 
+  - name: Docker
+    hosts: docker
+    become: yes
+    roles:
+      - docker
+
   - name: Web server
     hosts: web_servers
     become: yes
     roles:
       - agama
-      - uwsgi
 
   - name: Nginx
     hosts: all
@@ -90,6 +96,7 @@
     become: yes
     roles:
       - grafana
+    tags: grafana
 
   - name: DNS Config
     hosts: all
