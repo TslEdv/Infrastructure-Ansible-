@@ -10,6 +10,7 @@ dns_forwarders:
 networks:
  - 192.168.42.0/24
  - 127.0.0.0/8
+ - 172.17.0.0/16
 mysql_host: TslEdv2
 mysql_database: agama
 mysql_user: agama

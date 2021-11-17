@@ -5,6 +5,7 @@
     published_ports: "{{ grafana_port }}:3000"
     volumes: /opt/grafana:/etc/grafana
     container_default_behavior: no_defaults
+    restart_policy: always
 
 - name: Create directories
   ansible.builtin.file:
@@ -21,15 +22,20 @@
     dest: /opt/grafana/grafana.ini
 
 - name: Fill dashboards directory
-  template:
+  copy:
     src: "{{ item }}"
     dest: /opt/grafana/provisioning/dashboards/
   notify: Restart grafana
   loop:
-  - dashboard.yaml
   - main.json
   - sql.json
   - syslog.json
+
+- name: Fill dashboards directory
+  template:
+    src: dashboard.yaml
+    dest: /opt/grafana/provisioning/dashboards/
+  notify: Restart grafana
 
 - name: Fill datasources directory
   template:

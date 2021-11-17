@@ -12,7 +12,8 @@ server {
 	}
 
         location / {
-          proxy_pass http://localhost:8001/;
+          proxy_pass http://localhost:8001;
+          proxy_set_header Host $http_host;
         }
 
 	{% endif %}
