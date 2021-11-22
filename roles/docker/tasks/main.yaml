@@ -4,6 +4,17 @@
       - docker.io
       - python3-docker
 
+- name: Upload iptables template
+  copy:
+    src: iptables.mangle
+    dest: /var/local/iptables.mangle
+
+- name: restore iptable
+  community.general.iptables_state:
+    path: /var/local/iptables.mangle
+    state: restored
+    table: mangle
+
 - name: Docker service
   ansible.builtin.service:
     name: docker
