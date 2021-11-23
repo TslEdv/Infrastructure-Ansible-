@@ -1,0 +1,26 @@
+- name: Install haproxy
+  ansible.builtin.apt:
+    name:
+      - haproxy
+
+- name: haproxy conf
+  template:
+    dest: /etc/haproxy/haproxy.cfg
+    src: haproxy.cfg.j2
+  notify: restart haproxy
+
+- name: Install haproxy exporter
+  ansible.builtin.apt:
+    name: prometheus-haproxy-exporter
+  
+- name: Copy args
+  template:
+    src: prometheus-haproxy-exporter
+    dest: /etc/default/prometheus-haproxy-exporter
+  notify: restart ha-exporter
+
+- name: Start haproxy
+  service:
+    name: haproxy
+    state: started
+    enabled: yes

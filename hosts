@@ -1,5 +1,5 @@
-TslEdv1 ansible_host=193.40.156.86 ansible_port=15422 ansible_ssh_user=ubuntu
-TslEdv2 ansible_host=193.40.156.86 ansible_port=8722 ansible_ssh_user=ubuntu
+TslEdv1 ansible_host=193.40.156.86 ansible_port=3922 ansible_ssh_user=ubuntu
+TslEdv2 ansible_host=193.40.156.86 ansible_port=9722 ansible_ssh_user=ubuntu
 
 [db_servers]
 TslEdv1
@@ -22,3 +22,8 @@ TslEdv1
 
 [docker]
 TslEdv1
+TslEdv2
+
+[haproxy]
+TslEdv1
+TslEdv2

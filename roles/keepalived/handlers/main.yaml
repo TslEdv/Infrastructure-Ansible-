@@ -1,0 +1,11 @@
+- name: restart keepalived
+  service:
+    name: keepalived
+    state: restarted
+
+- name: Enable and reload daemon
+  systemd:
+    name: keepalived-exporter
+    daemon_reload: yes
+    enabled: yes
+    state: started

@@ -79,6 +79,14 @@
       - rsyslog
     tags: syslog
 
+  - name: Keepalived
+    hosts: haproxy
+    become: yes
+    roles:
+      - keepalived
+      - haproxy
+    tags: ha
+
   - name: Docker
     hosts: docker
     become: yes

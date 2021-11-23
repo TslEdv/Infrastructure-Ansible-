@@ -1,0 +1,40 @@
+- name: Install keepalived
+  ansible.builtin.apt:
+    name:
+      - keepalived
+
+- name: Create directory
+  ansible.builtin.file:
+    path: "/home/keepalived_script"
+    state: directory
+    recurse: yes
+
+- name: Copy script
+  template:
+    dest: /home/keepalived_script/check_ha
+    src: check_ha.j2
+    mode: 755
+
+- name: Keepalive conf
+  template:
+    dest: /etc/keepalived/keepalived.conf
+    src: keepalived.conf.j2
+  notify: restart keepalived
+
+- name: Unarchive a file that needs to be downloaded (added in 2.0)
+  ansible.builtin.unarchive:
+    src: https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.2.0/keepalived-exporter-1.2.0.linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
+
+- name: keepalived-exporter.service upload
+  template:
+    src: keepalived-exporter.service
+    dest: /etc/systemd/system/keepalived-exporter.service
+  notify: Enable and reload daemon
+
+- name: Start Keepalived
+  service:
+    name: keepalived
+    state: started
+    enabled: yes

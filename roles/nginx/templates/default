@@ -50,4 +50,10 @@ server {
         }
         {% endif %}
 
+        {% if inventory_hostname in groups['haproxy'] %}
+        location /nginx-metrics {
+          proxy_pass http://localhost:9113/metrics;
+        }
+        {% endif %}
+
 }
