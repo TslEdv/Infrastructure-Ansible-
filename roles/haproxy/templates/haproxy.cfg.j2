@@ -28,6 +28,8 @@ listen my_ha_frontend
     bind :88
 	stats enable
     stats uri /stats
-    server docker1 TslEdv1:8001 check
-    server docker2 TslEdv2:8001 check
+	{% for vm in groups['all'] %}
+	server {{ vm }}docker1 {{ vm }}:8001 check
+	server {{ vm }}docker2 {{ vm }}:8002 check
+    {% endfor %}
     

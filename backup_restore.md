@@ -4,6 +4,8 @@ Install and configure infrastructure with Ansible:
 
     ansible-playbook infra.yaml
 
+Go to TslEdv2 (or any other VM that is MASTER)
+
 Change to user called backup
 
     sudo -u backup -s
@@ -27,6 +29,7 @@ Install and configure infrastructure with Ansible:
 
     ansible-playbook infra.yaml
 
+Go to TslEdv2 (or any other VM that is MASTER)
 Stop telegraf service:
 
     service telegraf stop
