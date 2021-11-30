@@ -36,12 +36,20 @@
     tags: mysql_exporter
 
   - name: bind9
-    hosts: bind
+    hosts: dns_servers
     become: yes
     roles:
       - bind
       - bind_exporter
     tags: bind
+
+  - name: DNS records
+    hosts: dns_master
+    become: yes
+    roles:
+      - dns_records
+    tags: records
+
 
   - name: DNS Config
     hosts: all

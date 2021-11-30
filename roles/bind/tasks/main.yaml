@@ -1,7 +1,8 @@
 - name: Install bind
   apt:
-    name: bind9
-    state: latest
+    name:
+      - bind9
+      - python3-dnspython
 
 - name: bind9
   service:
@@ -13,12 +14,24 @@
   ansible.builtin.template:
     src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
+  no_log: true
   notify: Restart bind9
 
 - name: Upload db file
+  when: inventory_hostname in groups['dns_master']
   ansible.builtin.template:
     src: db.essing
     dest: /var/cache/bind/db.essing
+    force: no
+  notify: rndc reload
+
+- name: Upload db reverse file
+  when: inventory_hostname in groups['dns_master']
+  ansible.builtin.template:
+    src: db.essing.reverse
+    dest: /var/cache/bind/db.reverse
+    force: no
+  notify: rndc reload
 
 - name: Configure bind9
   ansible.builtin.template:
