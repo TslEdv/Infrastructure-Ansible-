@@ -7,7 +7,7 @@ zone "{{ domain }}" {
 	type slave;
 	masters { {{ hostvars[groups['dns_master'][0]]['ansible_default_ipv4']['address'] }}; };
 {% endif %}
-	file "db.{{ startup }}";
+	file "/var/cache/bind/db.{{ startup }}";
 };
 
 zone "42.168.192.in-addr.arpa" {
@@ -19,7 +19,7 @@ zone "42.168.192.in-addr.arpa" {
 	type slave;
 	masters { {{ hostvars[groups['dns_master'][0]]['ansible_default_ipv4']['address'] }}; };
 {% endif %}
-	file "db.reverse";
+	file "/var/cache/bind/db.reverse";
 };
 
 {% if inventory_hostname not in groups['dns_master'] %}
