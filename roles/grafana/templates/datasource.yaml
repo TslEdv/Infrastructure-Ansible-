@@ -20,7 +20,7 @@ datasources:
     # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
     uid: my_unique_uid
     # <string> url
-    url: http://TslEdv1:9090/prometheus/
+    url: http://prometheus:9090/prometheus/
     # <string> Deprecated, use secureJsonData.password
     password:
     # <string> database user, if used
@@ -45,7 +45,7 @@ datasources:
     orgId: 1
     # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated au>
     # <string> url
-    url: http://TslEdv2:8086
+    url: http://influxdb:8086
     # <string> Deprecated, use secureJsonData.password
     password:
     # <string> database user, if used
@@ -72,7 +72,7 @@ datasources:
     orgId: 1
     # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated au>
     # <string> url
-    url: http://TslEdv2:8086
+    url: http://influxdb:8086
     # <string> Deprecated, use secureJsonData.password
     password:
     # <string> database user, if used

@@ -1,10 +1,10 @@
 - name: Add user backup
   ansible.builtin.user:
     name: backup
-    state: present
     home: /home/backup
+    shell: /bin/bash
     generate_ssh_key: yes
-    ssh_key_bits: 2048
+    ssh_key_file: /home/backup/.ssh/id_rsa
 
 - name: server key config
   template:
@@ -12,6 +12,7 @@
     dest: /home/backup/.ssh/known_hosts
     owner: backup
     mode: '0644'
+    force: no
 
 - name: Create directory restore
   ansible.builtin.file:

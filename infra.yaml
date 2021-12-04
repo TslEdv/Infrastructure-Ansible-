@@ -13,6 +13,7 @@
       - init
       - node_exporter
       - backup
+    tags: init
 
   - name: mysql
     hosts: db_servers
