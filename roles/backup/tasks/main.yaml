@@ -13,6 +13,7 @@
     owner: backup
     mode: '0644'
     force: no
+  no_log: true
 
 - name: Create directory restore
   ansible.builtin.file:

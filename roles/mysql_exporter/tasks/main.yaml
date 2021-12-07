@@ -32,6 +32,7 @@
     dest: /var/lib/prometheus/.my.cnf
     mode: '0400'
     owner: prometheus
+  no_log: true
   notify: 
     - Restart sql
     - Restart mysqlexporter

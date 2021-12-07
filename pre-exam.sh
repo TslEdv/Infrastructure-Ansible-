@@ -1,4 +1,4 @@
-#!/bin/sh -eux
+#!/bin/bash -ex
 
 date > pre_exam.txt
 

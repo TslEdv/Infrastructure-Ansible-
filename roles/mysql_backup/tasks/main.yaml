@@ -21,6 +21,7 @@
     dest: /home/backup/.my.cnf
     mode: '0400'
     owner: backup
+  no_log: true
   notify: 
     - Restart sql
 
