@@ -32,7 +32,7 @@ Install and configure infrastructure with Ansible:
 
     ansible-playbook infra.yaml
 
-Go to TslEdv2 (or any other VM that is MASTER)
+Go to TslEdv1 (or any other VM that is MASTER)
 Enter super user mode:
 
     sudo su

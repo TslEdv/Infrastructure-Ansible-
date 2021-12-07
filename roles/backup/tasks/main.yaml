@@ -26,3 +26,4 @@
     name: duplicity
     state: latest
     update_cache: yes
+  

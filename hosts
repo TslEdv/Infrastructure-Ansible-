@@ -1,19 +1,21 @@
-TslEdv1 ansible_host=193.40.156.86 ansible_port=8522 ansible_ssh_user=ubuntu
-TslEdv2 ansible_host=193.40.156.86 ansible_port=19922 ansible_ssh_user=ubuntu
+TslEdv1 ansible_host=193.40.156.86 ansible_port=2822 ansible_ssh_user=ubuntu
+TslEdv2 ansible_host=193.40.156.86 ansible_port=13222 ansible_ssh_user=ubuntu
+TslEdv3 ansible_host=193.40.156.86 ansible_port=8622 ansible_ssh_user=ubuntu
 
 [db_servers]
-TslEdv1
 TslEdv2
+TslEdv3
 
 [web_servers]
 TslEdv1
 TslEdv2
+TslEdv3
 
 [bind]
 TslEdv2
 
 [influxdb]
-TslEdv2
+TslEdv1
 
 [prometheus]
 TslEdv1
@@ -24,16 +26,18 @@ TslEdv1
 [docker]
 TslEdv1
 TslEdv2
+TslEdv3
 
 [haproxy]
-TslEdv1
 TslEdv2
+TslEdv3
 
 [dns_master]
-TslEdv2
+TslEdv1
 
 [dns_slaves]
-TslEdv1
+TslEdv2
+TslEdv3
 
 [dns_servers:children]
 dns_master

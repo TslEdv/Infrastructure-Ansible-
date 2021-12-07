@@ -14,9 +14,11 @@ dns_cname_records:
   mysql2: "{{ groups['db_servers'][1] }}"
   ns1: "{{ groups['dns_servers'][0] }}"
   ns2: "{{ groups['dns_servers'][1] }}"
+  ns3: "{{ groups['dns_servers'][2] }}"
   prometheus: "{{ groups['prometheus'][0] }}"
   web1: "{{ groups['web_servers'][0] }}"
   web2: "{{ groups['web_servers'][1] }}"
+  web3: "{{ groups['web_servers'][2] }}"
 dns_forwarders:
  - 1.1.1.1
  - 8.8.8.8
@@ -26,7 +28,7 @@ networks:
  - 192.168.42.0/24
  - 127.0.0.0/8
  - 172.17.0.0/16
-mysql_host: "{{ groups['db_servers'][1] }}"
+mysql_host: "{{ groups['db_servers'][0] }}"
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |

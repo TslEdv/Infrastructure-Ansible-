@@ -12,6 +12,7 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     priv: 
       'agama.*': 'LOCK TABLES,SELECT'
+  no_log: yes
   notify: Restart sql
 
 - name: MySQL backup config

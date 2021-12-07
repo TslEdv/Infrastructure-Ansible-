@@ -101,8 +101,14 @@
     become: yes
     roles:
       - docker
-      - agama
     tags: docker
+
+  - name: Agama
+    hosts: haproxy
+    become: yes
+    roles:
+      - agama
+    tags: agama
 
   - name: Nginx
     hosts: all

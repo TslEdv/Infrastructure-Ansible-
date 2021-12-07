@@ -16,7 +16,9 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     priv: 
       '*.*': 'PROCESS,REPLICATION CLIENT,SELECT'
+  no_log: yes
   notify: Restart sql
+
 
 - name: Configure default
   ansible.builtin.template:

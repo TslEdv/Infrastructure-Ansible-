@@ -22,8 +22,9 @@
     published_ports: "800{{ item }}:8000"
     container_default_behavior: no_defaults
     env:
-      AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@mysql2/{{ mysql_database }}
+      AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@mysql1/{{ mysql_database }}
     restart_policy: always
+  no_log: yes
   loop:
     - 1
     - 2

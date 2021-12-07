@@ -32,6 +32,7 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
+  no_log: yes
   notify: Restart sql
 
 - name: MySQL user replication
@@ -41,6 +42,7 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     host: "%"
     priv: "*.*:REPLICATION SLAVE"
+  no_log: yes
   notify: Restart sql
 
 - name: MySQL replica read only mode ON
