@@ -45,6 +45,9 @@
   no_log: yes
   notify: Restart sql
 
+- name: Flush handlers
+  meta: flush_handlers
+
 - name: MySQL replica read only mode ON
   community.mysql.mysql_variables:
     variable: read_only

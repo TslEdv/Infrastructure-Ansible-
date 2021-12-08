@@ -88,4 +88,4 @@ datasources:
     # <map> fields that will be converted to json and stored in jsonData
     editable: false
     jsonData:
-      httpMode: GET
+      httpMode: POST

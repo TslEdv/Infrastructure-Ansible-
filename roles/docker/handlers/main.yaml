@@ -1,0 +1,4 @@
+- name: save state
+  community.general.iptables_state:
+    state: saved
+    path: /etc/iptables/rules.v4
