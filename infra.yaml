@@ -1,14 +1,12 @@
 ---
   - name: Setup
     hosts: all
-    become: yes
     gather_facts: yes
     tasks:
       - setup:
 
   - name: Init
     hosts: all
-    become: yes
     roles:
       - init
       - node_exporter
@@ -17,28 +15,24 @@
 
   - name: mysql
     hosts: db_servers
-    become: yes
     roles:
       - mysql
     tags: mysql
 
   - name: mysql backup
     hosts: db_servers
-    become: yes
     roles:
       - mysql_backup
     tags: mysql_backup
 
   - name: mysql exporter
     hosts: db_servers
-    become: yes
     roles:
       - mysql_exporter
     tags: mysql_exporter
 
   - name: bind9
     hosts: dns_servers
-    become: yes
     roles:
       - bind
       - bind_exporter
@@ -46,7 +40,6 @@
 
   - name: DNS records
     hosts: dns_master
-    become: yes
     roles:
       - dns_records
     tags: records
@@ -54,14 +47,12 @@
 
   - name: DNS Config
     hosts: all
-    become: yes
     roles:
       - dns
     tags: dns
 
   - name: influxdb
     hosts: influxdb
-    become: yes
     roles:
       - influxdb
       - influxdb_backup
@@ -69,28 +60,24 @@
 
   - name: influxdb exporter  
     hosts: influxdb
-    become: yes
     roles:
       - influxdb_exporter
     tags: influxdb_exporter
 
   - name: pinger
     hosts: influxdb
-    become: yes
     roles:
       - pinger
     tags: ping
 
   - name: rsyslog telegraf
     hosts: all
-    become: yes
     roles:
       - rsyslog
     tags: syslog
 
   - name: Keepalived
     hosts: haproxy
-    become: yes
     roles:
       - keepalived
       - haproxy
@@ -98,21 +85,18 @@
 
   - name: Docker
     hosts: docker
-    become: yes
     roles:
       - docker
     tags: docker
 
   - name: Agama
     hosts: haproxy
-    become: yes
     roles:
       - agama
     tags: agama
 
   - name: Nginx
     hosts: all
-    become: yes
     roles:
       - nginx
       - nginx_exporter
@@ -120,14 +104,12 @@
 
   - name: Prometheus
     hosts: prometheus
-    become: yes
     roles:
       - prometheus
     tags: prometheus
 
   - name: grafana
     hosts: grafana
-    become: yes
     roles:
       - grafana
     tags: grafana
